@@ -12,3 +12,4 @@ path = "src/lib.rs"
 sea-orm-migration.workspace = true
 tokio.workspace = true
 dokiray_entity.workspace = true
+uuid.workspace = true

@@ -1,4 +1,4 @@
-use sea_orm_migration::{prelude::*, sea_orm::{prelude::Uuid, Set}};
+use sea_orm_migration::{prelude::*, sea_orm::Set};
 
 use dokiray_entity::user;
 use sea_orm_migration::sea_orm::ActiveModelTrait;
@@ -14,7 +14,13 @@ impl MigrationTrait for Migration {
                 Table::create()
                     .table(User::Table)
                     .if_not_exists()
-                    .col(ColumnDef::new(User::Id).uuid().not_null().primary_key())
+                    .col(
+                        ColumnDef::new(User::Id)
+                            .integer()
+                            .not_null()
+                            .auto_increment()
+                            .primary_key(),
+                    )
                     .col(ColumnDef::new(User::Name).string().not_null())
                     .col(
                         ColumnDef::new(User::CreateTime)
@@ -32,8 +38,7 @@ impl MigrationTrait for Migration {
 
         let db = manager.get_connection();
         let admin = user::ActiveModel {
-            id: Set(Uuid::from_u128(555)),
-            name: Set("fasdfas".to_owned()),
+            name: Set("admin".to_owned()),
             password: Set("fdasdfa".to_owned()),
             ..Default::default()
         };
@@ -57,6 +62,19 @@ enum User {
     CreateTime,
     UpdateTime,
     Email,
+    #[iden = "password"]
+    Password,
+    Role,
+}
+
+#[derive(Iden)]
+enum Link {
+    Table,
+    Id,
+    Url,
+    CreateTime,
+    UpdateTime,
+    Ios,
     #[iden = "password"]
     Password,
     Role,

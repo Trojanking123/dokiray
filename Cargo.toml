@@ -10,3 +10,4 @@ sea-orm = { version = "0.12", features = [ "sqlx-all", "macros", "runtime-tokio"
 sea-orm-migration = { version = "0.12", features = ["runtime-tokio-rustls", "sqlx-postgres"  ] }
 serde = {version = "1.0", features = ["derive"]}
 dokiray_entity = {version = "*" , path = "./dokiray-entity"}
+uuid = {version = "1.8", features = ["v4", "fast-rng", "v7", "std"]}

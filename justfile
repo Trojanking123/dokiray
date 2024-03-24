@@ -20,6 +20,9 @@ fresh:
 refresh:
     DATABASE_URL="postgresql://root:123456@localhost:5432/dokiray"  sea-orm-cli migrate refresh -d ./dokiray-migration
 
+down:
+    DATABASE_URL="postgresql://root:123456@localhost:5432/dokiray"  sea-orm-cli migrate down -d ./dokiray-migration
+
 pg:
     PGPASSWORD='123456' psql -d dokiray -U root -h 127.0.0.1
 
