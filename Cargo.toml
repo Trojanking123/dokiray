@@ -1,0 +1,12 @@
+[workspace]
+members = ["dokiray", "dokiray-entity", "dokiray-migration", "dokiray-entity"]
+resolver = "2"
+
+[workspace.dependencies]
+tokio = {version = "1.0",  features = ["full"]}
+tracing = "*"
+tracing-subscriber = "*"
+sea-orm = { version = "0.12", features = [ "sqlx-all", "macros", "runtime-tokio", "runtime-tokio-rustls" ] }
+sea-orm-migration = { version = "0.12", features = ["runtime-tokio-rustls", "sqlx-postgres"  ] }
+serde = {version = "1.0", features = ["derive"]}
+dokiray_entity = {version = "*" , path = "./dokiray-entity"}
